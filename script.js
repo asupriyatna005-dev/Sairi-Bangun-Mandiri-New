@@ -41,3 +41,22 @@ Mohon informasi lebih lanjut. Terima kasih.`;
     "noopener"
   );
 });
+/* =========================================================
+   PETA JANGKAUAN - INTERAKTIF
+   ========================================================= */
+
+document.querySelectorAll('.map-point').forEach(point => {
+
+    point.addEventListener('click', function () {
+
+        document.querySelectorAll('.map-point').forEach(item => {
+            if (item !== this) {
+                item.classList.remove('active');
+            }
+        });
+
+        this.classList.toggle('active');
+
+    });
+
+});
