@@ -807,3 +807,199 @@ height: auto;
 display: block;
 }
 }
+/* =========================================================
+   PETA JANGKAUAN LAYANAN - INTERAKTIF
+   ========================================================= */
+
+.coverage {
+    padding: 70px 0;
+    background: #f8f9fb;
+}
+
+.coverage .section-title {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.coverage .section-title h2 {
+    color: #0d315b;
+    margin-bottom: 10px;
+}
+
+.coverage .section-title p {
+    color: #666;
+    margin: 0;
+    font-size: 15px;
+}
+
+/* MAP */
+
+.coverage-map {
+    position: relative;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.coverage-map img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* TITIK */
+
+.map-point {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    z-index: 5;
+}
+
+/* lingkaran luar */
+
+.map-point span {
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: #d6a83c;
+    border: 3px solid #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px #d6a83c,
+                0 3px 10px rgba(0,0,0,.25);
+    transition: .25s ease;
+}
+
+/* efek saat hover */
+
+.map-point:hover span,
+.map-point:focus span {
+    width: 21px;
+    height: 21px;
+    box-shadow: 0 0 0 5px rgba(214,168,60,.25),
+                0 4px 15px rgba(0,0,0,.3);
+}
+
+/* NAMA KOTA */
+
+.map-point strong {
+    position: absolute;
+    left: 50%;
+    bottom: 22px;
+    transform: translateX(-50%) translateY(5px);
+
+    background: #0d315b;
+    color: #fff;
+    padding: 7px 11px;
+    border-radius: 6px;
+
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: .25s ease;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,.2);
+}
+
+/* segitiga kecil */
+
+.map-point strong::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -5px;
+    transform: translateX(-50%);
+
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #0d315b;
+}
+
+/* tampilkan nama */
+
+.map-point:hover strong,
+.map-point:focus strong,
+.map-point.active strong {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* KETERANGAN */
+
+.coverage-info {
+    text-align: center;
+    margin-top: 20px;
+    color: #666;
+    font-size: 13px;
+}
+
+.coverage-info span {
+    color: #d6a83c;
+    font-size: 18px;
+    vertical-align: middle;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .coverage {
+        padding: 40px 0;
+    }
+
+    .coverage .section-title {
+        margin-bottom: 18px;
+    }
+
+    .coverage .section-title h2 {
+        font-size: 23px;
+        margin-bottom: 7px;
+    }
+
+    .coverage .section-title p {
+        font-size: 13px;
+        line-height: 1.5;
+        padding: 0 15px;
+    }
+
+    .coverage-map {
+        width: 100%;
+    }
+
+    .map-point {
+        width: 22px;
+        height: 22px;
+    }
+
+    .map-point span {
+        width: 13px;
+        height: 13px;
+        border-width: 2px;
+    }
+
+    .map-point strong {
+        font-size: 10px;
+        padding: 5px 8px;
+    }
+
+    .coverage-info {
+        margin-top: 12px;
+        font-size: 11px;
+    }
+}
