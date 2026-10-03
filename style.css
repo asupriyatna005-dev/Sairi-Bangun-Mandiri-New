@@ -371,3 +371,407 @@ a{color:inherit;text-decoration:none}.container{width:min(1180px,calc(100% - 40p
     max-width:1400px;
     height:auto;
 }
+/* =========================================================
+SBM - PREMIUM NAVY GOLD THEME
+Tambahkan di PALING BAWAH style.css
+========================================================= */
+
+/* ---------- GLOBAL ---------- */
+body {
+background: #f7f8fa;
+}
+
+.section {
+position: relative;
+overflow: hidden;
+}
+
+/* Dekorasi halus pada section terang */
+.section:not(.portfolio):not(.contact)::before {
+content: "";
+position: absolute;
+width: 420px;
+height: 420px;
+right: -220px;
+top: -180px;
+border-radius: 50%;
+background: radial-gradient(
+circle,
+rgba(243, 183, 25, 0.07) 0%,
+rgba(243, 183, 25, 0.025) 40%,
+transparent 72%
+);
+pointer-events: none;
+}
+
+/* ---------- SERVICES ---------- */
+.services {
+background:
+linear-gradient(
+135deg,
+rgba(8, 41, 75, 0.025),
+transparent 45%
+),
+#f7f8fa;
+}
+
+.services::after {
+content: "";
+position: absolute;
+left: -160px;
+bottom: -180px;
+width: 430px;
+height: 430px;
+border: 1px solid rgba(8, 41, 75, 0.05);
+border-radius: 50%;
+pointer-events: none;
+}
+
+.section-intro,
+.service-grid {
+position: relative;
+z-index: 1;
+}
+
+/* Garis gold kecil di bawah judul section */
+.section-intro h2::after,
+.about-copy h2::after,
+.process h2::after,
+.faq h2::after {
+content: "";
+display: block;
+width: 42px;
+height: 3px;
+margin-top: 15px;
+background: var(--gold);
+border-radius: 3px;
+}
+
+/* ---------- SERVICE CARD ---------- */
+.service-card {
+border: 1px solid rgba(8, 41, 75, 0.09);
+box-shadow:
+0 8px 25px rgba(8, 41, 75, 0.07),
+0 1px 2px rgba(8, 41, 75, 0.04);
+}
+
+.service-card:hover {
+border-color: rgba(243, 183, 25, 0.55);
+box-shadow:
+0 18px 40px rgba(8, 41, 75, 0.14),
+0 0 0 1px rgba(243, 183, 25, 0.08);
+}
+
+.service-card::before {
+content: "";
+position: absolute;
+left: 0;
+top: 0;
+width: 100%;
+height: 3px;
+background: linear-gradient(
+90deg,
+var(--gold),
+transparent
+);
+z-index: 3;
+}
+
+/* ---------- ABOUT ---------- */
+.about {
+background:
+linear-gradient(
+90deg,
+#eef2f5 0%,
+#f7f8fa 52%,
+#ffffff 100%
+);
+}
+
+.about::after {
+content: "";
+position: absolute;
+right: -140px;
+bottom: -220px;
+width: 480px;
+height: 480px;
+border: 1px solid rgba(8, 41, 75, 0.055);
+border-radius: 50%;
+box-shadow:
+0 0 0 35px rgba(8, 41, 75, 0.018),
+0 0 0 70px rgba(243, 183, 25, 0.018);
+pointer-events: none;
+}
+
+.about-inner {
+position: relative;
+z-index: 2;
+}
+
+.about-copy {
+position: relative;
+}
+
+.about-copy h2 {
+color: var(--navy);
+}
+
+.stats div {
+border-left: 3px solid var(--gold);
+}
+
+.strengths {
+border: 1px solid rgba(8, 41, 75, 0.10);
+background:
+linear-gradient(
+145deg,
+#ffffff 0%,
+#f8fafc 100%
+);
+box-shadow:
+0 18px 40px rgba(8, 41, 75, 0.10);
+}
+
+.strengths h3 {
+color: var(--navy);
+position: relative;
+padding-bottom: 10px;
+}
+
+.strengths h3::after {
+content: "";
+position: absolute;
+left: 0;
+bottom: 0;
+width: 32px;
+height: 2px;
+background: var(--gold);
+}
+
+/* ---------- PORTFOLIO ---------- */
+.portfolio {
+position: relative;
+background:
+radial-gradient(
+circle at 85% 20%,
+rgba(243, 183, 25, 0.10),
+transparent 28%
+),
+linear-gradient(
+135deg,
+#061a2d 0%,
+#08294b 48%,
+#0d3a63 100%
+);
+}
+
+.portfolio::before {
+content: "";
+position: absolute;
+width: 500px;
+height: 500px;
+right: -230px;
+bottom: -260px;
+border: 1px solid rgba(243, 183, 25, 0.13);
+border-radius: 50%;
+box-shadow:
+0 0 0 40px rgba(243, 183, 25, 0.025),
+0 0 0 80px rgba(255, 255, 255, 0.015);
+pointer-events: none;
+}
+
+.portfolio::after {
+content: "";
+position: absolute;
+left: 0;
+right: 0;
+top: 0;
+height: 1px;
+background: linear-gradient(
+90deg,
+transparent,
+rgba(243, 183, 25, 0.7),
+transparent
+);
+}
+
+/* ---------- PROCESS ---------- */
+.process {
+background:
+linear-gradient(
+135deg,
+rgba(8, 41, 75, 0.025),
+transparent 50%
+),
+#f7f8fa;
+}
+
+.process-layout {
+position: relative;
+z-index: 1;
+}
+
+.process-steps {
+position: relative;
+}
+
+.process-steps::before {
+content: "";
+position: absolute;
+top: 19px;
+left: 35px;
+right: 35px;
+height: 1px;
+background: linear-gradient(
+90deg,
+transparent,
+rgba(8, 41, 75, 0.15),
+transparent
+);
+z-index: 0;
+}
+
+.step {
+position: relative;
+z-index: 1;
+background: rgba(247, 248, 250, 0.85);
+}
+
+.step b {
+border: 3px solid #f7f8fa;
+box-shadow:
+0 5px 15px rgba(8, 41, 75, 0.14);
+color: #172a3d;
+}
+
+.step h3 {
+color: var(--navy);
+}
+
+/* ---------- CONTACT ---------- */
+.contact {
+background:
+radial-gradient(
+circle at 15% 15%,
+rgba(243, 183, 25, 0.09),
+transparent 25%
+),
+#08294b;
+}
+
+.contact::after {
+content: "";
+position: absolute;
+width: 500px;
+height: 500px;
+right: -260px;
+top: -260px;
+border: 1px solid rgba(243, 183, 25, 0.10);
+border-radius: 50%;
+pointer-events: none;
+}
+
+.contact-form {
+border-top: 4px solid var(--gold);
+box-shadow:
+0 25px 60px rgba(0, 0, 0, 0.28);
+}
+
+.contact-form h3 {
+color: var(--navy);
+}
+
+/* ---------- FAQ ---------- */
+.faq {
+background:
+radial-gradient(
+circle at 90% 10%,
+rgba(243, 183, 25, 0.055),
+transparent 25%
+),
+#ffffff;
+}
+
+.faq .narrow {
+position: relative;
+z-index: 1;
+}
+
+.faq details {
+border-color: rgba(8, 41, 75, 0.10);
+}
+
+.faq summary {
+color: var(--navy);
+transition: color 0.2s ease;
+}
+
+.faq summary:hover {
+color: var(--gold);
+}
+
+/* ---------- FOOTER ---------- */
+.footer {
+background:
+radial-gradient(
+circle at 85% 0%,
+rgba(243, 183, 25, 0.07),
+transparent 25%
+),
+linear-gradient(
+135deg,
+#061827,
+#071a2b
+);
+}
+
+.footer-bottom {
+border-top-color: rgba(243, 183, 25, 0.18);
+}
+
+/* ---------- MOBILE ---------- */
+@media (max-width: 800px) {
+
+.process-steps::before {
+display: none;
+}
+
+.about {
+background:
+linear-gradient(
+180deg,
+#eef2f5,
+#f8f9fa
+);
+}
+
+.services,
+.process {
+background: #f6f8fa;
+}
+}
+
+@media (max-width: 520px) {
+
+.section-intro h2::after,
+.about-copy h2::after,
+.process h2::after,
+.faq h2::after {
+width: 34px;
+margin-top: 12px;
+}
+
+.portfolio {
+background:
+radial-gradient(
+circle at 90% 10%,
+rgba(243, 183, 25, 0.08),
+transparent 30%
+),
+linear-gradient(
+145deg,
+#061a2d,
+#08294b
+);
+}
+}
