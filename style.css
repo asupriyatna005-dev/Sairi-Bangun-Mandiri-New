@@ -1461,20 +1461,28 @@ display: block;
   display:flex;
   gap:10px;
 }
-
 .footer-social a {
-  color:#d5e0eb;
-  border:1px solid rgba(255,255,255,.2);
+  color:#fff;
+  border:0;
   border-radius:7px;
-  padding:7px 12px;
+  padding:8px 14px;
   font-size:11px;
+  font-weight:700;
   text-decoration:none;
 }
 
-.footer-social a:hover {
-  color:#10243a;
-  background:var(--gold);
-  border-color:var(--gold);
+.footer-social a:first-child {
+  background:#25D366;
+}
+
+.footer-social a:last-child {
+  background:linear-gradient(45deg,#f58529,#dd2a7b,#8134af,#515bd4);
+}
+
+.footer-social a:first-child:hover,
+.footer-social a:last-child:hover {
+  color:#fff;
+  transform:translateY(-2px);
 }
 
 .footer .seo-keywords {
