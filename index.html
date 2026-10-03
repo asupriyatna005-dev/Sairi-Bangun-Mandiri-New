@@ -40,12 +40,7 @@
       </nav>
     </div>
   </header>
-  
-  <div id="lightbox" class="lightbox">
-  <span class="lightbox-close">&times;</span>
-  <img id="lightbox-img" src="" alt="">
-</div>
-  
+
   <main>
     <section class="hero">
       <div class="hero-overlay"></div>
@@ -139,9 +134,7 @@
           <p class="eyebrow">PORTOFOLIO</p>
           <h2>Hasil Pekerjaan Kami</h2>
           <p>Dokumentasi proyek yang telah kami kerjakan di berbagai lokasi dan kebutuhan konstruksi.</p>
-          <a class="btn btn-outline light" href="portfolio.html>
-    Lihat Semua Portofolio →
-</a>
+          <a class="btn btn-outline light" href="#kontak">Lihat Semua Portofolio →</a>
         </div>
         <div class="portfolio-grid">
           <div class="portfolio-item"><div class="portfolio-img p1"></div><span>Injeksi Beton<br><small>Basement</small></span></div>
@@ -219,11 +212,9 @@
 Sairi Bangun Mandiri melayani jasa perbaikan dak bocor, waterproofing membran bakar, waterproofing coating, injeksi beton, grouting system, epoxy lantai, dan coring beton di Jabodetabek, Bandung, Cirebon, Semarang, Yogyakarta, Surabaya, Bali, Sumatera, Kalimantan, Sulawesi, Papua, Nusa Tenggara, Maluku hingga seluruh wilayah Indonesia. Kami siap melayani proyek rumah tinggal, ruko, gedung perkantoran, apartemen, pabrik, gudang, pusat perbelanjaan, dan berbagai kebutuhan konstruksi lainnya.
   </p>
 </section>
-
-  </div>
-</section>
-    
   </main>
+
+
 <footer class="footer">
   <div class="container footer-bottom">
     <span>© <span id="year"></span> Sairi Bangun Mandiri. All rights reserved.</span>
@@ -235,47 +226,6 @@ Sairi Bangun Mandiri melayani jasa perbaikan dak bocor, waterproofing membran ba
   </p>
 </footer>
 
-<script>
-
-const filterButtons =
-document.querySelectorAll('.filter-buttons button');
-
-const galleryItems =
-document.querySelectorAll('.gallery-item');
-
-filterButtons.forEach(button => {
-
-  button.addEventListener('click', () => {
-
-    filterButtons.forEach(btn => {
-      btn.classList.remove('active');
-    });
-
-    button.classList.add('active');
-
-    const filter =
-    button.getAttribute('data-filter');
-
-    galleryItems.forEach(item => {
-
-      if(filter === 'all'){
-        item.style.display = 'block';
-      } else {
-        item.style.display =
-        item.classList.contains(filter)
-        ? 'block'
-        : 'none';
-      }
-
-    });
-
-  });
-
-});
-
-</script>
-  
        <script src="script.js"></script>
    </body>
    </html>
-
