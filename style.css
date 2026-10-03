@@ -1371,3 +1371,30 @@ display: block;
         border-left-width: 4px;
     }
 }
+.section-intro .text-link {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 11px 18px;
+    background: var(--navy);
+    color: #fff;
+    border-left: 4px solid var(--gold);
+    border-radius: 7px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13px;
+    box-shadow: 0 6px 16px rgba(8,41,75,.14);
+    transition: .25s ease;
+}
+
+.section-intro .text-link:hover {
+    background: var(--navy-2);
+    transform: translateY(-2px);
+    box-shadow: 0 9px 20px rgba(8,41,75,.20);
+}
+
+@media (max-width: 520px) {
+    .section-intro .text-link {
+        font-size: 12px;
+        padding: 10px 15px;
+    }
+}
