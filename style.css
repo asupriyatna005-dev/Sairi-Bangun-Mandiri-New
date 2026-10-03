@@ -775,3 +775,35 @@ linear-gradient(
 );
 }
 }
+/* =========================================================
+JANGKAUAN LAYANAN - MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+.coverage {
+padding-top: 40px;
+padding-bottom: 40px;
+}
+
+.coverage .section-title {
+margin-bottom: 12px;
+}
+
+.coverage .section-title h2 {
+font-size: 25px;
+line-height: 1.2;
+margin: 0;
+letter-spacing: 0.5px;
+}
+
+.coverage-map {
+margin-top: 8px;
+}
+
+.coverage-map img {
+width: 100%;
+height: auto;
+display: block;
+}
+}
