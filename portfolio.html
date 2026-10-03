@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Portofolio Proyek | Sairi Bangun Mandiri</title>
+  <meta name="description" content="Galeri hasil pekerjaan Sairi Bangun Mandiri meliputi waterproofing, membran bakar, injeksi beton, grouting, epoxy lantai dan coring beton.">
+
+  <link rel="icon" href="assets/images/logo-sbm.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="portfolio.css">
+</head>
+
+<body class="gallery-page">
+
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="brand" href="index.html" aria-label="Sairi Bangun Mandiri">
+      <img src="assets/images/logo-sbm.jpg" alt="Logo Sairi Bangun Mandiri">
+    </a>
+
+    <button class="menu-toggle" aria-label="Buka menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="nav" aria-label="Navigasi utama">
+      <a href="index.html">Beranda</a>
+      <a href="index.html#layanan">Layanan</a>
+      <a href="index.html#tentang">Tentang Kami</a>
+      <a href="portfolio.html">Portofolio</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="index.html#kontak">Kontak</a>
+      <a class="btn btn-gold btn-small"
+         href="https://wa.me/6285716499600?text=Halo%20Sairi%20Bangun%20Mandiri%2C%20saya%20ingin%20konsultasi."
+         target="_blank" rel="noopener">Hubungi Kami</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="gallery-hero">
+    <div class="container">
+      <p class="eyebrow">PORTOFOLIO</p>
+      <h1>Hasil Pekerjaan Kami</h1>
+      <p>
+        Dokumentasi proyek Sairi Bangun Mandiri dari berbagai pekerjaan
+        waterproofing, perbaikan beton dan kebutuhan konstruksi.
+      </p>
+
+      <div class="gallery-back">
+        <a class="btn btn-outline" href="index.html#portfolio">← Kembali ke Beranda</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="gallery-toolbar">
+      <div class="gallery-filters">
+        <button class="gallery-filter active" data-filter="all">Semua</button>
+        <button class="gallery-filter" data-filter="injeksi">Injeksi Beton</button>
+        <button class="gallery-filter" data-filter="coating">Waterproofing Coating</button>
+        <button class="gallery-filter" data-filter="membran">Membran Bakar</button>
+        <button class="gallery-filter" data-filter="grouting">Grouting</button>
+        <button class="gallery-filter" data-filter="epoxy">Epoxy</button>
+        <button class="gallery-filter" data-filter="coring">Coring</button>
+      </div>
+    </div>
+
+    <div class="gallery-grid">
+
+      <article class="gallery-card injeksi">
+        <div class="gallery-photo">
+          <img src="assets/images/injeksi_beton_indonesia.jpg" alt="Proyek Injeksi Beton" loading="lazy">
+        </div>
+        <div class="gallery-info">
+          <h3>Injeksi Beton</h3>
+          <p>Perbaikan beton dan penanganan kebocoran basement.</p>
+        </div>
+      </article>
+
+      <article class="gallery-card coating">
+        <div class="gallery-photo">
+          <img src="assets/images/waterproofing_coating_indonesia.jpg" alt="Proyek Waterproofing Coating" loading="lazy">
+        </div>
+        <div class="gallery-info">
+          <h3>Waterproofing Coating</h3>
+          <p>Pelapisan area atap dak dan area yang membutuhkan perlindungan air.</p>
+        </div>
+      </article>
+
+      <article class="gallery-card membran">
+        <div class="gallery-photo">
+          <img src="assets/images/membran_bakar.jpg" alt="Proyek Membran Bakar" loading="lazy">
+        </div>
+        <div class="gallery-info">
+          <h3>Membran Bakar</h3>
+          <p>Pemasangan waterproofing membran pada atap gedung.</p>
+        </div>
+      </article>
+
+      <article class="gallery-card grouting">
+        <div class="gallery-photo">
+          <img src="assets/images/grouting_system_indonesia.jpg" alt="Proyek Grouting System" loading="lazy">
+        </div>
+        <div class="gallery-info">
+          <h3>Grouting System</h3>
+          <p>Pekerjaan grouting untuk kebutuhan konstruksi dan kedap air.</p>
+        </div>
+      </article>
+
+      <article class="gallery-card epoxy">
+        <div class="gallery-photo">
+          <img src="assets/images/epoxy_lantai_indonesia_sbm.jpg" alt="Proyek Epoxy Lantai" loading="lazy">
+        </div>
+        <div class="gallery-info">
+          <h3>Epoxy Lantai</h3>
+          <p>Pelapisan lantai untuk area pabrik dan kebutuhan industri.</p>
+        </div>
+      </article>
+
+      <article class="gallery-card coring">
+        <div class="gallery-photo">
+          <img src="assets/images/coring_beton_indonesia.jpg" alt="Proyek Coring Beton" loading="lazy">
+        </div>
+        <div class="gallery-info">
+          <h3>Coring Beton</h3>
+          <p>Pengeboran beton untuk instalasi mekanikal dan konstruksi.</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+</main>
+
+<div class="gallery-lightbox" id="galleryLightbox" aria-hidden="true">
+  <button class="gallery-lightbox-close" type="button" aria-label="Tutup">&times;</button>
+  <img id="galleryLightboxImage" src="" alt="">
+</div>
+
+<footer class="footer">
+  <div class="container footer-bottom">
+    <span>© <span id="year"></span> Sairi Bangun Mandiri. All rights reserved.</span>
+    <span>Waterproofing | Perbaikan Beton | Konstruksi</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script src="portfolio.js"></script>
+</body>
+</html>
