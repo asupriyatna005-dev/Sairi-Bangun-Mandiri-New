@@ -1042,3 +1042,319 @@ display: block;
     color: #0d315b;
     font-weight: 700;
 }
+/* =========================================================
+   PROSES PEKERJAAN - TIMELINE
+   ========================================================= */
+
+.process-section {
+    padding: 75px 0;
+    background: linear-gradient(
+        180deg,
+        #ffffff 0%,
+        #f6f8fb 100%
+    );
+}
+
+.process-section .section-title {
+    text-align: center;
+    margin-bottom: 55px;
+}
+
+.process-section .section-label {
+    display: inline-block;
+    color: #d6a83c;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+
+.process-section .section-title h2 {
+    color: #0d315b;
+    margin-bottom: 10px;
+}
+
+.process-section .section-title p {
+    max-width: 650px;
+    margin: 0 auto;
+    color: #6b7280;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+
+/* TIMELINE */
+
+.process-timeline {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    max-width: 1150px;
+    margin: 0 auto;
+}
+
+
+/* GARIS PENGHUBUNG */
+
+.process-timeline::before {
+    content: "";
+    position: absolute;
+    top: 43px;
+    left: 9%;
+    right: 9%;
+    height: 2px;
+    background: linear-gradient(
+        90deg,
+        rgba(214,168,60,.25),
+        #d6a83c,
+        rgba(214,168,60,.25)
+    );
+    z-index: 0;
+}
+
+
+/* ITEM */
+
+.process-item {
+    position: relative;
+    text-align: center;
+    z-index: 1;
+}
+
+
+/* ICON */
+
+.process-icon {
+    position: relative;
+    width: 78px;
+    height: 78px;
+    margin: 0 auto 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #0d315b;
+    border: 4px solid #ffffff;
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 0 2px #d6a83c,
+        0 8px 22px rgba(13,49,91,.18);
+
+    transition: .3s ease;
+}
+
+.process-icon svg {
+    width: 30px;
+    height: 30px;
+
+    fill: none;
+    stroke: #d6a83c;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+
+/* NOMOR */
+
+.process-number {
+    position: absolute;
+    top: -11px;
+    right: -10px;
+
+    width: 27px;
+    height: 27px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #d6a83c;
+    color: #0d315b;
+
+    border-radius: 50%;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    border: 2px solid #ffffff;
+}
+
+
+/* HOVER */
+
+.process-item:hover .process-icon {
+    transform: translateY(-6px);
+    box-shadow:
+        0 0 0 3px #d6a83c,
+        0 12px 28px rgba(13,49,91,.25);
+}
+
+.process-item:hover .process-icon svg {
+    transform: scale(1.08);
+}
+
+
+/* TEXT */
+
+.process-content h3 {
+    color: #0d315b;
+    font-size: 16px;
+    margin: 0 0 9px;
+    font-weight: 700;
+}
+
+.process-content p {
+    color: #6b7280;
+    font-size: 13px;
+    line-height: 1.65;
+    margin: 0 auto;
+    max-width: 190px;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .process-section {
+        padding: 50px 0;
+    }
+
+    .process-section .section-title {
+        margin-bottom: 40px;
+    }
+
+    .process-section .section-title h2 {
+        font-size: 24px;
+    }
+
+    .process-section .section-title p {
+        padding: 0 15px;
+        font-size: 13px;
+    }
+
+    .process-timeline {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+
+    /* GARIS VERTIKAL */
+
+    .process-timeline::before {
+        top: 35px;
+        bottom: 35px;
+        left: 57px;
+        right: auto;
+
+        width: 2px;
+        height: auto;
+
+        background: linear-gradient(
+            180deg,
+            rgba(214,168,60,.25),
+            #d6a83c,
+            rgba(214,168,60,.25)
+        );
+    }
+
+
+    .process-item {
+        display: flex;
+        align-items: flex-start;
+        text-align: left;
+        min-height: 125px;
+    }
+
+
+    .process-icon {
+        flex: 0 0 70px;
+        width: 70px;
+        height: 70px;
+        margin: 0 22px 0 0;
+    }
+
+    .process-icon svg {
+        width: 27px;
+        height: 27px;
+    }
+
+
+    .process-number {
+        width: 24px;
+        height: 24px;
+        font-size: 9px;
+    }
+
+
+    .process-content {
+        padding-top: 5px;
+    }
+
+    .process-content h3 {
+        font-size: 16px;
+        margin-bottom: 7px;
+    }
+
+    .process-content p {
+        max-width: none;
+        font-size: 12px;
+        line-height: 1.6;
+    }
+}
+
+
+/* HP KECIL */
+
+@media (max-width: 480px) {
+
+    .process-section {
+        padding: 42px 0;
+    }
+
+    .process-section .section-title {
+        margin-bottom: 32px;
+    }
+
+    .process-section .section-title h2 {
+        font-size: 22px;
+    }
+
+    .process-timeline {
+        padding: 0 15px;
+    }
+
+    .process-timeline::before {
+        left: 50px;
+    }
+
+    .process-icon {
+        flex-basis: 62px;
+        width: 62px;
+        height: 62px;
+        margin-right: 18px;
+    }
+
+    .process-icon svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .process-content h3 {
+        font-size: 15px;
+    }
+
+    .process-content p {
+        font-size: 11.5px;
+    }
+}
