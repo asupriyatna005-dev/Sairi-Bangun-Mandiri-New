@@ -686,3 +686,14 @@
   color: var(--ink);
   font-weight: 600;
 }
+.portfolio-copy .btn-outline.light {
+  background: rgba(255,255,255,.08);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,.45);
+}
+
+.portfolio-copy .btn-outline.light:hover {
+  background: var(--gold);
+  color: var(--navy);
+  border-color: var(--gold);
+}
