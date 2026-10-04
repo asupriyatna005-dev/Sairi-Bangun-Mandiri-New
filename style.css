@@ -1755,3 +1755,123 @@ display: block;
   font-weight: 700;
   line-height: 1.5;
 }
+/* =========================================
+   MULTI FOTO - PROJECT SLIDER
+========================================= */
+
+.project-photo-slider {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-photo-track {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform .35s ease;
+}
+
+.project-photo-track img {
+  min-width: 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+
+/* Tombol kiri & kanan */
+
+.project-slider-prev,
+.project-slider-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+
+  width: 34px;
+  height: 34px;
+
+  border: 0;
+  border-radius: 50%;
+
+  background: rgba(8,41,75,.82);
+  color: #fff;
+
+  font-size: 25px;
+  line-height: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  opacity: 0;
+  transition: .2s ease;
+}
+
+.project-slider-prev {
+  left: 12px;
+}
+
+.project-slider-next {
+  right: 12px;
+}
+
+
+/* Tombol muncul saat hover */
+
+.project-photo-slider:hover .project-slider-prev,
+.project-photo-slider:hover .project-slider-next {
+  opacity: 1;
+}
+
+.project-slider-prev:hover,
+.project-slider-next:hover {
+  background: var(--gold);
+  color: var(--navy);
+}
+
+
+/* Counter */
+
+.project-photo-count {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+
+  padding: 5px 9px;
+
+  background: rgba(8,41,75,.78);
+  color: #fff;
+
+  border-radius: 5px;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  z-index: 5;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 520px) {
+
+  .project-slider-prev,
+  .project-slider-next {
+    width: 30px;
+    height: 30px;
+    font-size: 21px;
+    opacity: 1;
+  }
+
+  .project-photo-count {
+    font-size: 9px;
+    padding: 4px 7px;
+  }
+
+}
