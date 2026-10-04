@@ -44,6 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 ```javascript
+```javascript
 /* =========================================================
    FULL GALLERY FILTER + LIGHTBOX + FOTO GESER
    ========================================================= */
@@ -54,7 +55,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const lightbox = document.getElementById("galleryLightbox");
   const lightboxImage = document.getElementById("galleryLightboxImage");
-  const close = document.querySelector(".gallery-lightbox-close");
+  const lightboxCount = document.getElementById("galleryLightboxCount");
+
+  const closeButton = document.querySelector(".gallery-lightbox-close");
+  const prevButton = document.querySelector(".gallery-lightbox-prev");
+  const nextButton = document.querySelector(".gallery-lightbox-next");
 
   let currentImages = [];
   let currentIndex = 0;
@@ -68,9 +73,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     button.addEventListener("click", () => {
 
-      filters.forEach((item) =>
-        item.classList.remove("active")
-      );
+      filters.forEach((item) => {
+        item.classList.remove("active");
+      });
 
       button.classList.add("active");
 
@@ -98,7 +103,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     photo.addEventListener("click", (event) => {
 
-      /* Jangan buka lightbox kalau yang diklik tombol slider */
+      /* Jangan buka lightbox saat tombol slider ditekan */
+
       if (
         event.target.closest(".project-slider-prev") ||
         event.target.closest(".project-slider-next")
@@ -108,14 +114,35 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const images = photo.querySelectorAll("img");
 
-      if (!images.length || !lightbox || !lightboxImage) return;
+      if (
+        !images.length ||
+        !lightbox ||
+        !lightboxImage
+      ) {
+        return;
+      }
 
       currentImages = Array.from(images);
-      currentIndex = 0;
+
+      /*
+        Cari foto yang sedang terlihat.
+        Jadi kalau di card sedang foto 3 / 4,
+        lightbox juga langsung membuka foto 3.
+      */
+
+      const visibleImage = Array.from(images).find(
+        (img) => img.getBoundingClientRect().width > 0
+      );
+
+      currentIndex = visibleImage
+        ? currentImages.indexOf(visibleImage)
+        : 0;
 
       showLightboxImage();
 
       lightbox.classList.add("open");
+      lightbox.setAttribute("aria-hidden", "false");
+
       document.body.style.overflow = "hidden";
 
     });
@@ -135,6 +162,30 @@ document.addEventListener("DOMContentLoaded", function () {
 
     lightboxImage.src = image.src;
     lightboxImage.alt = image.alt || "";
+
+    if (lightboxCount) {
+      lightboxCount.textContent =
+        `${currentIndex + 1} / ${currentImages.length}`;
+    }
+
+  }
+
+
+  /* =========================
+     FOTO SEBELUMNYA
+  ========================= */
+
+  function previousImage() {
+
+    if (!currentImages.length) return;
+
+    currentIndex--;
+
+    if (currentIndex < 0) {
+      currentIndex = currentImages.length - 1;
+    }
+
+    showLightboxImage();
 
   }
 
@@ -159,43 +210,33 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   /* =========================
-     FOTO SEBELUMNYA
+     TOMBOL PANAH
   ========================= */
 
-  function prevImage() {
+  if (prevButton) {
+    prevButton.addEventListener("click", (event) => {
 
-    if (!currentImages.length) return;
+      event.stopPropagation();
 
-    currentIndex--;
+      previousImage();
 
-    if (currentIndex < 0) {
-      currentIndex = currentImages.length - 1;
-    }
-
-    showLightboxImage();
-
+    });
   }
 
 
-  /* =========================
-     KLIK FOTO = NEXT
-  ========================= */
-
-  if (lightboxImage) {
-
-    lightboxImage.addEventListener("click", (event) => {
+  if (nextButton) {
+    nextButton.addEventListener("click", (event) => {
 
       event.stopPropagation();
 
       nextImage();
 
     });
-
   }
 
 
   /* =========================
-     TUTUP LIGHTBOX
+     TUTUP
   ========================= */
 
   function closeLightbox() {
@@ -203,6 +244,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!lightbox) return;
 
     lightbox.classList.remove("open");
+    lightbox.setAttribute("aria-hidden", "true");
 
     document.body.style.overflow = "";
 
@@ -212,13 +254,16 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
 
-  if (close) {
-    close.addEventListener("click", closeLightbox);
+  if (closeButton) {
+    closeButton.addEventListener(
+      "click",
+      closeLightbox
+    );
   }
 
 
   /* =========================
-     KLIK AREA GELAP = TUTUP
+     KLIK AREA GELAP
   ========================= */
 
   if (lightbox) {
@@ -240,7 +285,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   document.addEventListener("keydown", (event) => {
 
-    if (!lightbox || !lightbox.classList.contains("open")) {
+    if (
+      !lightbox ||
+      !lightbox.classList.contains("open")
+    ) {
       return;
     }
 
@@ -248,12 +296,12 @@ document.addEventListener("DOMContentLoaded", function () {
       closeLightbox();
     }
 
-    if (event.key === "ArrowRight") {
-      nextImage();
+    if (event.key === "ArrowLeft") {
+      previousImage();
     }
 
-    if (event.key === "ArrowLeft") {
-      prevImage();
+    if (event.key === "ArrowRight") {
+      nextImage();
     }
 
   });
