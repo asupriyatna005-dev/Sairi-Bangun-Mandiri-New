@@ -1662,3 +1662,58 @@ display: block;
     var(--gold) 100%
   ) 1;
 }
+/* =================================
+   BACKGROUND - JANGKAUAN LAYANAN
+================================= */
+
+.coverage {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(8,41,75,.035),
+      rgba(255,255,255,1) 45%,
+      rgba(243,183,25,.025)
+    );
+}
+
+/* Pola garis blueprint */
+.coverage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .45;
+  background:
+    linear-gradient(
+      135deg,
+      transparent 49.5%,
+      rgba(8,41,75,.045) 50%,
+      transparent 50.5%
+    );
+  background-size: 90px 90px;
+}
+
+/* Efek gelombang / aliran air */
+.coverage::after {
+  content: "";
+  position: absolute;
+  width: 650px;
+  height: 650px;
+  right: -260px;
+  bottom: -350px;
+  border: 1px solid rgba(8,41,75,.07);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 45px rgba(8,41,75,.018),
+    0 0 0 90px rgba(8,41,75,.012),
+    0 0 0 135px rgba(8,41,75,.008);
+  pointer-events: none;
+}
+
+/* Pastikan isi section tetap di atas background */
+.coverage > .container {
+  position: relative;
+  z-index: 1;
+}
