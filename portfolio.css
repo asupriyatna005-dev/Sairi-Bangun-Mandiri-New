@@ -300,3 +300,207 @@
     white-space: nowrap;
   }
 }
+```css
+/* =========================================
+   LIGHTBOX FOTO PROYEK
+========================================= */
+
+.gallery-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(0, 0, 0, .92);
+
+  padding: 30px;
+}
+
+.gallery-lightbox.open {
+  display: flex;
+}
+
+
+/* Area foto */
+
+.gallery-lightbox-content {
+  position: relative;
+
+  max-width: 90vw;
+  max-height: 90vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* Foto besar */
+
+.gallery-lightbox-content img {
+  display: block;
+
+  max-width: 90vw;
+  max-height: 85vh;
+
+  width: auto;
+  height: auto;
+
+  object-fit: contain;
+
+  border-radius: 6px;
+
+  cursor: pointer;
+
+  user-select: none;
+}
+
+
+/* Tombol tutup */
+
+.gallery-lightbox-close {
+  position: absolute;
+
+  top: 20px;
+  right: 25px;
+
+  z-index: 10;
+
+  width: 42px;
+  height: 42px;
+
+  border: 0;
+  border-radius: 50%;
+
+  background: rgba(8,41,75,.85);
+  color: #fff;
+
+  font-size: 30px;
+  line-height: 1;
+
+  cursor: pointer;
+}
+
+.gallery-lightbox-close:hover {
+  background: var(--gold);
+  color: var(--navy);
+}
+
+
+/* Panah kiri dan kanan */
+
+.gallery-lightbox-prev,
+.gallery-lightbox-next {
+  position: absolute;
+
+  top: 50%;
+  transform: translateY(-50%);
+
+  z-index: 10;
+
+  width: 48px;
+  height: 48px;
+
+  border: 0;
+  border-radius: 50%;
+
+  background: rgba(8,41,75,.85);
+  color: #fff;
+
+  font-size: 38px;
+  line-height: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  transition: .2s ease;
+}
+
+.gallery-lightbox-prev {
+  left: 25px;
+}
+
+.gallery-lightbox-next {
+  right: 25px;
+}
+
+.gallery-lightbox-prev:hover,
+.gallery-lightbox-next:hover {
+  background: var(--gold);
+  color: var(--navy);
+}
+
+
+/* Counter */
+
+.gallery-lightbox-count {
+  position: absolute;
+
+  left: 50%;
+  bottom: -35px;
+
+  transform: translateX(-50%);
+
+  padding: 5px 10px;
+
+  background: rgba(8,41,75,.85);
+  color: #fff;
+
+  border-radius: 5px;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 520px) {
+
+  .gallery-lightbox {
+    padding: 15px;
+  }
+
+  .gallery-lightbox-content img {
+    max-width: 92vw;
+    max-height: 78vh;
+  }
+
+  .gallery-lightbox-close {
+    top: 12px;
+    right: 12px;
+
+    width: 38px;
+    height: 38px;
+
+    font-size: 27px;
+  }
+
+  .gallery-lightbox-prev,
+  .gallery-lightbox-next {
+    width: 38px;
+    height: 38px;
+
+    font-size: 30px;
+  }
+
+  .gallery-lightbox-prev {
+    left: 10px;
+  }
+
+  .gallery-lightbox-next {
+    right: 10px;
+  }
+
+}
+```
