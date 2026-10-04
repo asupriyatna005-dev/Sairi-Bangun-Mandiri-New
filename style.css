@@ -1731,3 +1731,27 @@ display: block;
   border: 0;
   border-radius: 10px;
 }
+.contact-info {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 35px;
+  margin: 25px 0;
+  align-items: start;
+}
+
+.contact-info strong,
+.contact-info span {
+  display: block;
+}
+
+.contact-info strong {
+  font-size: 11px;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+
+.contact-info span {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.5;
+}
