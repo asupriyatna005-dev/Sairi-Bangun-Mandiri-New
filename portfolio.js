@@ -44,62 +44,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-/* =========================================================
-   FULL GALLERY FILTER + LIGHTBOX
-   ========================================================= */
-document.addEventListener("DOMContentLoaded", function () {
-  const filters = document.querySelectorAll(".gallery-filter");
-  const cards = document.querySelectorAll(".gallery-card");
-  const lightbox = document.getElementById("galleryLightbox");
-  const lightboxImage = document.getElementById("galleryLightboxImage");
-  const close = document.querySelector(".gallery-lightbox-close");
-
-  filters.forEach((button) => {
-    button.addEventListener("click", () => {
-      filters.forEach((item) => item.classList.remove("active"));
-      button.classList.add("active");
-
-      const filter = button.dataset.filter;
-
-      cards.forEach((card) => {
-        card.style.display =
-          filter === "all" || card.classList.contains(filter)
-            ? ""
-            : "none";
-      });
-    });
-  });
-
-  document.querySelectorAll(".gallery-photo").forEach((photo) => {
-    photo.addEventListener("click", () => {
-      const image = photo.querySelector("img");
-      if (!image || !lightbox || !lightboxImage) return;
-
-      lightboxImage.src = image.src;
-      lightboxImage.alt = image.alt;
-      lightbox.classList.add("open");
-      document.body.style.overflow = "hidden";
-    });
-  });
-
-  function closeLightbox() {
-    if (!lightbox) return;
-    lightbox.classList.remove("open");
-    document.body.style.overflow = "";
-  }
-
-  if (close) close.addEventListener("click", closeLightbox);
-
-  if (lightbox) {
-    lightbox.addEventListener("click", (event) => {
-      if (event.target === lightbox) closeLightbox();
-    });
-  }
-
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") closeLightbox();
-  });
-});
 // =========================================
 // MULTI FOTO PROJECT SLIDER
 // =========================================
