@@ -669,3 +669,20 @@
 
 }
 ```
+/* =========================================
+   LOKASI PROYEK - PENEKANAN
+========================================= */
+
+.project-meta > div:first-child {
+  background: rgba(243,183,25,.07);
+  border-color: rgba(243,183,25,.30);
+}
+
+.project-meta > div:first-child strong {
+  color: var(--navy);
+}
+
+.project-meta > div:first-child span {
+  color: var(--ink);
+  font-weight: 600;
+}
