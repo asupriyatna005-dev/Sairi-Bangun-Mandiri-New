@@ -100,3 +100,56 @@ document.addEventListener("DOMContentLoaded", function () {
     if (event.key === "Escape") closeLightbox();
   });
 });
+// =========================================
+// MULTI FOTO PROJECT SLIDER
+// =========================================
+
+document.querySelectorAll('.project-photo-slider').forEach(slider => {
+
+  const track = slider.querySelector('.project-photo-track');
+  const photos = track.querySelectorAll('img');
+
+  const prev = slider.querySelector('.project-slider-prev');
+  const next = slider.querySelector('.project-slider-next');
+  const counter = slider.querySelector('.project-photo-count');
+
+  let current = 0;
+
+  function updateSlider() {
+
+    track.style.transform =
+      `translateX(-${current * 100}%)`;
+
+    counter.textContent =
+      `${current + 1} / ${photos.length}`;
+  }
+
+  next.addEventListener('click', (event) => {
+
+    event.stopPropagation();
+
+    current++;
+
+    if (current >= photos.length) {
+      current = 0;
+    }
+
+    updateSlider();
+
+  });
+
+  prev.addEventListener('click', (event) => {
+
+    event.stopPropagation();
+
+    current--;
+
+    if (current < 0) {
+      current = photos.length - 1;
+    }
+
+    updateSlider();
+
+  });
+
+});
