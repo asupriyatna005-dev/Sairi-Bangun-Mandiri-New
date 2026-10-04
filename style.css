@@ -1645,3 +1645,19 @@ display: block;
     font-size: 12px;
   }
 }
+/* =================================
+   PEMISAH SECTION - LAYANAN KAMI
+================================= */
+
+.services {
+  position: relative;
+  border-top: 5px solid;
+  border-bottom: 5px solid;
+  border-image: linear-gradient(
+    90deg,
+    var(--navy) 0%,
+    var(--navy) 50%,
+    var(--gold) 50%,
+    var(--gold) 100%
+  ) 1;
+}
