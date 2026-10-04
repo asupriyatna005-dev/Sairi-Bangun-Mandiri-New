@@ -1,92 +1,132 @@
 /* =========================================================
-   PORTFOLIO CAROUSEL
+   PORTFOLIO.JS - SAIRI BANGUN MANDIRI
    ========================================================= */
+
 document.addEventListener("DOMContentLoaded", function () {
-  const track = document.getElementById("portfolioTrack");
-  const prev = document.querySelector(".portfolio-prev");
-  const next = document.querySelector(".portfolio-next");
 
-  if (track && prev && next) {
-    const move = () => {
-      const item = track.querySelector(".portfolio-item");
-      if (!item) return;
 
-      const gap = parseFloat(getComputedStyle(track).gap) || 0;
-      const distance = item.getBoundingClientRect().width + gap;
+  /* =======================================================
+     1. PORTFOLIO CAROUSEL - SECTION BERANDA
+     ======================================================= */
 
-      track.scrollBy({
-        left: distance,
-        behavior: "smooth"
-      });
-    };
+  const portfolioTrack = document.getElementById("portfolioTrack");
+  const portfolioPrev = document.querySelector(".portfolio-prev");
+  const portfolioNext = document.querySelector(".portfolio-next");
 
-    prev.addEventListener("click", () => {
-      const item = track.querySelector(".portfolio-item");
-      if (!item) return;
+  if (portfolioTrack && portfolioPrev && portfolioNext) {
 
-      const gap = parseFloat(getComputedStyle(track).gap) || 0;
-      const distance = item.getBoundingClientRect().width + gap;
+    function getPortfolioDistance() {
 
-      if (track.scrollLeft <= 5) {
-        track.scrollTo({
-          left: track.scrollWidth,
+      const item =
+        portfolioTrack.querySelector(".portfolio-item");
+
+      if (!item) return 0;
+
+      const gap =
+        parseFloat(
+          getComputedStyle(portfolioTrack).gap
+        ) || 0;
+
+      return item.getBoundingClientRect().width + gap;
+    }
+
+
+    portfolioNext.addEventListener("click", function () {
+
+      const distance = getPortfolioDistance();
+
+      if (!distance) return;
+
+      if (
+        portfolioTrack.scrollLeft +
+        portfolioTrack.clientWidth >=
+        portfolioTrack.scrollWidth - 10
+      ) {
+
+        portfolioTrack.scrollTo({
+          left: 0,
           behavior: "smooth"
         });
+
       } else {
-        track.scrollBy({
+
+        portfolioTrack.scrollBy({
+          left: distance,
+          behavior: "smooth"
+        });
+
+      }
+
+    });
+
+
+    portfolioPrev.addEventListener("click", function () {
+
+      const distance = getPortfolioDistance();
+
+      if (!distance) return;
+
+      if (portfolioTrack.scrollLeft <= 10) {
+
+        portfolioTrack.scrollTo({
+          left: portfolioTrack.scrollWidth,
+          behavior: "smooth"
+        });
+
+      } else {
+
+        portfolioTrack.scrollBy({
           left: -distance,
           behavior: "smooth"
         });
+
       }
+
     });
 
-    next.addEventListener("click", move);
   }
-});
-```javascript
-```javascript
-/* =========================================================
-   FULL GALLERY FILTER + LIGHTBOX + FOTO GESER
-   ========================================================= */
-document.addEventListener("DOMContentLoaded", function () {
-
-  const filters = document.querySelectorAll(".gallery-filter");
-  const cards = document.querySelectorAll(".gallery-card");
-
-  const lightbox = document.getElementById("galleryLightbox");
-  const lightboxImage = document.getElementById("galleryLightboxImage");
-  const lightboxCount = document.getElementById("galleryLightboxCount");
-
-  const closeButton = document.querySelector(".gallery-lightbox-close");
-  const prevButton = document.querySelector(".gallery-lightbox-prev");
-  const nextButton = document.querySelector(".gallery-lightbox-next");
-
-  let currentImages = [];
-  let currentIndex = 0;
 
 
-  /* =========================
-     FILTER
-  ========================= */
 
-  filters.forEach((button) => {
+  /* =======================================================
+     2. GALLERY FILTER
+     ======================================================= */
 
-    button.addEventListener("click", () => {
+  const filters =
+    document.querySelectorAll(".gallery-filter");
 
-      filters.forEach((item) => {
+  const cards =
+    document.querySelectorAll(".gallery-card");
+
+
+  filters.forEach(function (button) {
+
+    button.addEventListener("click", function () {
+
+      filters.forEach(function (item) {
         item.classList.remove("active");
       });
 
       button.classList.add("active");
 
-      const filter = button.dataset.filter;
+      const filter =
+        button.getAttribute("data-filter");
 
-      cards.forEach((card) => {
 
-        card.style.display =
-          filter === "all" || card.classList.contains(filter)
-            ? ""
-            : "none";
+      cards.forEach(function (card) {
+
+        if (
+          filter === "all" ||
+          card.classList.contains(filter)
+        ) {
+
+          card.style.display = "";
+
+        } else {
+
+          card.style.display = "none";
+
+        }
 
       });
 
@@ -95,113 +135,179 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 
-  /* =========================
-     BUKA LIGHTBOX
-  ========================= */
 
-  document.querySelectorAll(".gallery-photo").forEach((photo) => {
+  /* =======================================================
+     3. PROJECT PHOTO SLIDER
+     ======================================================= */
 
-    photo.addEventListener("click", (event) => {
+  const projectSliders =
+    document.querySelectorAll(".project-photo-slider");
 
-      /* Jangan buka lightbox saat tombol slider ditekan */
 
-      if (
-        event.target.closest(".project-slider-prev") ||
-        event.target.closest(".project-slider-next")
-      ) {
-        return;
+  projectSliders.forEach(function (slider) {
+
+    const track =
+      slider.querySelector(".project-photo-track");
+
+    const photos =
+      slider.querySelectorAll(".project-photo-track img");
+
+    const prev =
+      slider.querySelector(".project-slider-prev");
+
+    const next =
+      slider.querySelector(".project-slider-next");
+
+    const counter =
+      slider.querySelector(".project-photo-count");
+
+
+    if (
+      !track ||
+      !photos.length ||
+      !prev ||
+      !next
+    ) {
+      return;
+    }
+
+
+    let current = 0;
+
+
+    function updateProjectSlider() {
+
+      track.style.transform =
+        "translateX(-" + (current * 100) + "%)";
+
+
+      if (counter) {
+
+        counter.textContent =
+          (current + 1) + " / " + photos.length;
+
       }
 
-      const images = photo.querySelectorAll("img");
+    }
 
-      if (
-        !images.length ||
-        !lightbox ||
-        !lightboxImage
-      ) {
-        return;
+
+    next.addEventListener("click", function (event) {
+
+      event.preventDefault();
+      event.stopPropagation();
+
+      current++;
+
+      if (current >= photos.length) {
+        current = 0;
       }
 
-      currentImages = Array.from(images);
-
-      /*
-        Cari foto yang sedang terlihat.
-        Jadi kalau di card sedang foto 3 / 4,
-        lightbox juga langsung membuka foto 3.
-      */
-
-      const visibleImage = Array.from(images).find(
-        (img) => img.getBoundingClientRect().width > 0
-      );
-
-      currentIndex = visibleImage
-        ? currentImages.indexOf(visibleImage)
-        : 0;
-
-      showLightboxImage();
-
-      lightbox.classList.add("open");
-      lightbox.setAttribute("aria-hidden", "false");
-
-      document.body.style.overflow = "hidden";
+      updateProjectSlider();
 
     });
+
+
+    prev.addEventListener("click", function (event) {
+
+      event.preventDefault();
+      event.stopPropagation();
+
+      current--;
+
+      if (current < 0) {
+        current = photos.length - 1;
+      }
+
+      updateProjectSlider();
+
+    });
+
+
+    updateProjectSlider();
 
   });
 
 
-  /* =========================
-     TAMPILKAN FOTO
-  ========================= */
+
+  /* =======================================================
+     4. LIGHTBOX
+     ======================================================= */
+
+  const lightbox =
+    document.getElementById("galleryLightbox");
+
+  const lightboxImage =
+    document.getElementById("galleryLightboxImage");
+
+  const lightboxCount =
+    document.getElementById("galleryLightboxCount");
+
+  const lightboxClose =
+    document.querySelector(".gallery-lightbox-close");
+
+  const lightboxPrev =
+    document.querySelector(".gallery-lightbox-prev");
+
+  const lightboxNext =
+    document.querySelector(".gallery-lightbox-next");
+
+
+  let lightboxImages = [];
+  let lightboxIndex = 0;
+
+
+  /* -------------------------------------------------------
+     TAMPILKAN FOTO LIGHTBOX
+     ------------------------------------------------------- */
 
   function showLightboxImage() {
 
-    if (!currentImages.length) return;
+    if (
+      !lightboxImages.length ||
+      !lightboxImage
+    ) {
+      return;
+    }
 
-    const image = currentImages[currentIndex];
+
+    const image =
+      lightboxImages[lightboxIndex];
+
 
     lightboxImage.src = image.src;
     lightboxImage.alt = image.alt || "";
 
+
     if (lightboxCount) {
+
       lightboxCount.textContent =
-        `${currentIndex + 1} / ${currentImages.length}`;
+        (lightboxIndex + 1) +
+        " / " +
+        lightboxImages.length;
+
     }
 
   }
 
 
-  /* =========================
-     FOTO SEBELUMNYA
-  ========================= */
 
-  function previousImage() {
-
-    if (!currentImages.length) return;
-
-    currentIndex--;
-
-    if (currentIndex < 0) {
-      currentIndex = currentImages.length - 1;
-    }
-
-    showLightboxImage();
-
-  }
-
-
-  /* =========================
+  /* -------------------------------------------------------
      FOTO BERIKUTNYA
-  ========================= */
+     ------------------------------------------------------- */
 
-  function nextImage() {
+  function nextLightboxImage() {
 
-    if (!currentImages.length) return;
+    if (!lightboxImages.length) return;
 
-    currentIndex++;
+    lightboxIndex++;
 
-    if (currentIndex >= currentImages.length) {
-      currentIndex = 0;
+    if (
+      lightboxIndex >=
+      lightboxImages.length
+    ) {
+
+      lightboxIndex = 0;
+
     }
 
     showLightboxImage();
@@ -209,156 +315,281 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
 
-  /* =========================
-     TOMBOL PANAH
-  ========================= */
 
-  if (prevButton) {
-    prevButton.addEventListener("click", (event) => {
+  /* -------------------------------------------------------
+     FOTO SEBELUMNYA
+     ------------------------------------------------------- */
 
-      event.stopPropagation();
+  function previousLightboxImage() {
 
-      previousImage();
+    if (!lightboxImages.length) return;
 
-    });
+    lightboxIndex--;
+
+    if (lightboxIndex < 0) {
+
+      lightboxIndex =
+        lightboxImages.length - 1;
+
+    }
+
+    showLightboxImage();
+
   }
 
 
-  if (nextButton) {
-    nextButton.addEventListener("click", (event) => {
 
-      event.stopPropagation();
+  /* -------------------------------------------------------
+     BUKA LIGHTBOX
+     ------------------------------------------------------- */
 
-      nextImage();
+  document
+    .querySelectorAll(".gallery-photo")
+    .forEach(function (photo) {
+
+      photo.addEventListener("click", function (event) {
+
+
+        /* Jangan buka lightbox ketika tombol slider diklik */
+
+        if (
+          event.target.closest(
+            ".project-slider-prev"
+          ) ||
+          event.target.closest(
+            ".project-slider-next"
+          )
+        ) {
+
+          return;
+
+        }
+
+
+        const images =
+          photo.querySelectorAll("img");
+
+
+        if (
+          !images.length ||
+          !lightbox ||
+          !lightboxImage
+        ) {
+
+          return;
+
+        }
+
+
+        lightboxImages =
+          Array.from(images);
+
+
+        /*
+          Cari foto yang sedang tampil.
+          Kalau card sedang berada di foto 3,
+          lightbox juga membuka foto 3.
+        */
+
+        let visibleIndex = 0;
+
+
+        lightboxImages.forEach(
+          function (image, index) {
+
+            const rect =
+              image.getBoundingClientRect();
+
+            if (rect.width > 0) {
+              visibleIndex = index;
+            }
+
+          }
+        );
+
+
+        lightboxIndex =
+          visibleIndex;
+
+
+        showLightboxImage();
+
+
+        lightbox.classList.add("open");
+
+        lightbox.setAttribute(
+          "aria-hidden",
+          "false"
+        );
+
+        document.body.style.overflow =
+          "hidden";
+
+      });
 
     });
+
+
+
+  /* =======================================================
+     5. TOMBOL LIGHTBOX
+     ======================================================= */
+
+  if (lightboxPrev) {
+
+    lightboxPrev.addEventListener(
+      "click",
+      function (event) {
+
+        event.preventDefault();
+        event.stopPropagation();
+
+        previousLightboxImage();
+
+      }
+    );
+
   }
 
 
-  /* =========================
-     TUTUP
-  ========================= */
+  if (lightboxNext) {
+
+    lightboxNext.addEventListener(
+      "click",
+      function (event) {
+
+        event.preventDefault();
+        event.stopPropagation();
+
+        nextLightboxImage();
+
+      }
+    );
+
+  }
+
+
+
+  /* =======================================================
+     6. TUTUP LIGHTBOX
+     ======================================================= */
 
   function closeLightbox() {
 
     if (!lightbox) return;
 
+
     lightbox.classList.remove("open");
-    lightbox.setAttribute("aria-hidden", "true");
+
+
+    lightbox.setAttribute(
+      "aria-hidden",
+      "true"
+    );
+
 
     document.body.style.overflow = "";
 
-    currentImages = [];
-    currentIndex = 0;
+
+    if (lightboxImage) {
+      lightboxImage.src = "";
+    }
+
+
+    lightboxImages = [];
+    lightboxIndex = 0;
 
   }
 
 
-  if (closeButton) {
-    closeButton.addEventListener(
+
+  if (lightboxClose) {
+
+    lightboxClose.addEventListener(
       "click",
-      closeLightbox
+      function (event) {
+
+        event.preventDefault();
+        event.stopPropagation();
+
+        closeLightbox();
+
+      }
     );
+
   }
 
 
-  /* =========================
-     KLIK AREA GELAP
-  ========================= */
+
+  /* =======================================================
+     7. KLIK AREA GELAP UNTUK MENUTUP
+     ======================================================= */
 
   if (lightbox) {
 
-    lightbox.addEventListener("click", (event) => {
+    lightbox.addEventListener(
+      "click",
+      function (event) {
 
-      if (event.target === lightbox) {
-        closeLightbox();
+        if (
+          event.target === lightbox
+        ) {
+
+          closeLightbox();
+
+        }
+
+      }
+    );
+
+  }
+
+
+
+  /* =======================================================
+     8. KEYBOARD
+     ======================================================= */
+
+  document.addEventListener(
+    "keydown",
+    function (event) {
+
+      if (
+        !lightbox ||
+        !lightbox.classList.contains("open")
+      ) {
+
+        return;
+
       }
 
-    });
 
-  }
+      if (event.key === "Escape") {
+
+        closeLightbox();
+
+      }
 
 
-  /* =========================
-     KEYBOARD
-  ========================= */
+      if (event.key === "ArrowLeft") {
 
-  document.addEventListener("keydown", (event) => {
+        event.preventDefault();
 
-    if (
-      !lightbox ||
-      !lightbox.classList.contains("open")
-    ) {
-      return;
+        previousLightboxImage();
+
+      }
+
+
+      if (event.key === "ArrowRight") {
+
+        event.preventDefault();
+
+        nextLightboxImage();
+
+      }
+
     }
+  );
 
-    if (event.key === "Escape") {
-      closeLightbox();
-    }
-
-    if (event.key === "ArrowLeft") {
-      previousImage();
-    }
-
-    if (event.key === "ArrowRight") {
-      nextImage();
-    }
-
-  });
-
-});
-```
-
-// =========================================
-// MULTI FOTO PROJECT SLIDER
-// =========================================
-
-document.querySelectorAll('.project-photo-slider').forEach(slider => {
-
-  const track = slider.querySelector('.project-photo-track');
-  const photos = track.querySelectorAll('img');
-
-  const prev = slider.querySelector('.project-slider-prev');
-  const next = slider.querySelector('.project-slider-next');
-  const counter = slider.querySelector('.project-photo-count');
-
-  let current = 0;
-
-  function updateSlider() {
-
-    track.style.transform =
-      `translateX(-${current * 100}%)`;
-
-    counter.textContent =
-      `${current + 1} / ${photos.length}`;
-  }
-
-  next.addEventListener('click', (event) => {
-
-    event.stopPropagation();
-
-    current++;
-
-    if (current >= photos.length) {
-      current = 0;
-    }
-
-    updateSlider();
-
-  });
-
-  prev.addEventListener('click', (event) => {
-
-    event.stopPropagation();
-
-    current--;
-
-    if (current < 0) {
-      current = photos.length - 1;
-    }
-
-    updateSlider();
-
-  });
 
 });
