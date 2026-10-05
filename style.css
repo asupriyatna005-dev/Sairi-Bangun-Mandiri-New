@@ -1875,3 +1875,7 @@ display: block;
   }
 
 }
+.service-card .service-body h3,
+.service-card .service-body p {
+  text-align: left;
+}
