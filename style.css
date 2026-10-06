@@ -1879,3 +1879,4 @@ display: block;
 .service-card .service-body p {
   text-align: left;
 }
+.service-card .service-desc{display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
