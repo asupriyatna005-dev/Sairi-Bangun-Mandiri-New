@@ -1880,3 +1880,4 @@ display: block;
   text-align: left;
 }
 .service-card .service-desc{display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.service-toggle{border:0;background:none;color:#fff;font-weight:800;font-size:15px;padding:0;margin-top:22px;cursor:pointer;text-shadow:0 2px 4px rgba(0,0,0,.8)}
