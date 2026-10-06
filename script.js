@@ -60,3 +60,4 @@ document.querySelectorAll('.map-point').forEach(point => {
     });
 
 });
+document.querySelectorAll('.service-toggle').forEach(button=>{button.addEventListener('click',()=>{const desc=button.parentElement.querySelector('.service-desc');desc.classList.toggle('service-desc-open');button.textContent=desc.classList.contains('service-desc-open')?'←':'→'})});
