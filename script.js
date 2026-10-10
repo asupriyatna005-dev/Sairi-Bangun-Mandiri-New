@@ -36,7 +36,7 @@ Pesan: ${message || "-"}
 Mohon informasi lebih lanjut. Terima kasih.`;
 
   window.open(
-    `https://wa.me/6285716499600?text=${encodeURIComponent(text)}`,
+    `https://wa.me/628219797436?text=${encodeURIComponent(text)}`,
     "_blank",
     "noopener"
   );
