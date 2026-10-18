@@ -991,15 +991,15 @@ display: block;
     }
 
     .map-point {
-        width: 22px;
-        height: 22px;
-    }
+    width: 16px;
+    height: 16px;
+}
 
-    .map-point span {
-        width: 13px;
-        height: 13px;
-        border-width: 2px;
-    }
+   .map-point span {
+    width: 8px;
+    height: 8px;
+    border-width: 2px;
+}
 
     .map-point strong {
         font-size: 10px;
