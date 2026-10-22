@@ -1891,7 +1891,8 @@ a.floating-whatsapp{position:fixed!important;right:22px!important;bottom:24px!im
 .service-card-link .service-image-link{display:block;overflow:hidden;cursor:pointer}
 .service-card-link .service-image{transition:transform .35s ease}
 .service-card-link:hover .service-image-link .service-image{transform:scale(1.06)}
-.service-card-link .service-detail-link{display:inline-block;margin-top:12px;color:var(--gold);font-weight:700;font-size:14px;text-decoration:none}
+.service-card-link .service-detail-link{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:10px 14px;background:var(--gold);color:var(--navy);font-weight:700;font-size:13px;text-decoration:none;border-radius:6px;transition:background .25s ease,transform .25s ease}
+.service-card-link .service-detail-link:hover{background:var(--gold-2);transform:translateY(-2px)}
 .service-card-link .service-detail-link span{display:inline-block;transition:transform .25s ease}
 .service-card-link .service-detail-link:hover span{transform:translateX(5px)}
 .service-card-link .service-body h3 a{color:inherit;text-decoration:none}
