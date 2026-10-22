@@ -1890,7 +1890,7 @@ a.floating-whatsapp{position:fixed!important;right:22px!important;bottom:24px!im
 
 .service-card-link .service-image-link{display:block;overflow:hidden;cursor:pointer}
 .service-card-link .service-image{transition:transform .35s ease}
-.service-card-link:hover .service-image{transform:scale(1.06)}
+.service-card-link:hover .service-image-link .service-image{transform:scale(1.06)}
 .service-card-link .service-detail-link{display:inline-block;margin-top:12px;color:var(--gold);font-weight:700;font-size:14px;text-decoration:none}
 .service-card-link .service-detail-link span{display:inline-block;transition:transform .25s ease}
 .service-card-link .service-detail-link:hover span{transform:translateX(5px)}
