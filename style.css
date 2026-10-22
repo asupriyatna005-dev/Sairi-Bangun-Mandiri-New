@@ -1898,3 +1898,4 @@ a.floating-whatsapp{position:fixed!important;right:22px!important;bottom:24px!im
 .service-card-link .service-body h3 a{color:inherit;text-decoration:none}
 .service-card-link .service-body h3 a:hover{color:var(--gold)}
 @media(prefers-reduced-motion:reduce){.service-card-link .service-image,.service-card-link .service-detail-link span{transition:none}}
+.membran-btn{display:inline-block;margin-top:14px;padding:14px 22px;background:#25D366;color:#fff;text-decoration:none;font-weight:800;border-radius:8px;transition:background .25s ease,transform .25s ease}.membran-btn:hover{background:#128C7E;transform:translateY(-2px)}
