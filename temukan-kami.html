@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -35,6 +36,7 @@
 .find-cta p{line-height:1.7;color:#e4ebf2}
 .find-cta a{display:inline-block;margin-top:12px;padding:13px 22px;background:#f3b719;color:#08294b;text-decoration:none;font-weight:800;border-radius:7px}
 .find-back{display:inline-block;margin:20px 4%;color:#0d5a91;text-decoration:none;font-weight:700}
+.city-section[hidden]{display:none!important}
 @media(max-width:700px){.area-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.city-section{padding:20px}.find-hero{padding:48px 15px}}
 @media(max-width:420px){.area-grid{grid-template-columns:1fr}}
 </style>
@@ -168,6 +170,25 @@
 
 </div>
 </main>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const sections = document.querySelectorAll(".city-section");
+
+  function showSelectedCity() {
+    const selectedId = window.location.hash.replace("#", "").toLowerCase();
+    const validIds = ["tangerang-selatan", "tangerang", "depok", "jakarta", "bogor", "bekasi"];
+    const cityId = validIds.includes(selectedId) ? selectedId : "";
+
+    sections.forEach(function (section) {
+      section.hidden = cityId !== "" && section.id !== cityId;
+    });
+  }
+
+  showSelectedCity();
+  window.addEventListener("hashchange", showSelectedCity);
+});
+</script>
+
 </body>
 </html>
-
